@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -136,12 +135,11 @@
             text-align: center;
             position: relative;
             padding: 2rem;
-            background-image: url('images/kd.png');
+            background-image: url('images/K&D.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* Fallback background if image doesn't load */
-            background-color: var(--dark);
+            background-color: #2C2C2C;
         }
 
         .hero::before {
@@ -247,9 +245,7 @@
         .story-image {
             width: 100%;
             height: 500px;
-            background-image: url('images/our-story.jpg');
-            background-size: cover;
-            background-position: center;
+            background-color: var(--sage);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -420,8 +416,7 @@
 
         .gallery-item {
             height: 300px;
-            background-size: cover;
-            background-position: center;
+            background-color: var(--sage);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -431,30 +426,11 @@
             font-size: 1.2rem;
             transition: transform 0.3s ease;
             cursor: pointer;
-            position: relative;
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item:hover {
             transform: scale(1.02);
         }
-
-        /* Individual gallery images */
-        .gallery-item:nth-child(1) { background-image: url('images/gallery-1.jpg'); }
-        .gallery-item:nth-child(2) { background-image: url('images/gallery-2.jpg'); }
-        .gallery-item:nth-child(3) { background-image: url('images/gallery-3.jpg'); }
-        .gallery-item:nth-child(4) { background-image: url('images/gallery-4.jpg'); }
-        .gallery-item:nth-child(5) { background-image: url('images/gallery-5.jpg'); }
-        .gallery-item:nth-child(6) { background-image: url('images/gallery-6.jpg'); }
 
         /* Footer */
         .footer {
@@ -524,6 +500,11 @@
                 display: block;
             }
 
+            /* THIS IS THE KEY CHANGE - Focuses on the left side of the image on mobile */
+            .hero {
+                background-position: 25% center;
+            }
+
             .hero-title {
                 font-size: 3.5rem;
             }
@@ -546,6 +527,11 @@
         }
 
         @media (max-width: 480px) {
+            /* For very small screens, focus even more to the left */
+            .hero {
+                background-position: 20% center;
+            }
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -580,7 +566,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section with K&D.png -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <p class="hero-date">Together with their families</p>
@@ -599,7 +585,7 @@
             <h2 class="section-title">Our Story</h2>
             <p class="section-subtitle">How it all began</p>
             <div class="story-grid">
-                <div class="story-image"></div>
+                <div class="story-image">Our Love Story</div>
                 <div class="story-text">
                     <p>Every love story is beautiful, but ours is my favorite. From the moment we met, there was an undeniable connection that neither of us could ignore. Through laughter, adventures, and quiet moments together, we've built a foundation of love, trust, and unwavering support.</p>
                     <p style="margin-top: 1.5rem;">What started as a chance encounter has blossomed into a lifetime commitment. We've shared countless memories, overcome challenges together, and grown stronger with each passing day. Now, we're ready to begin our greatest adventure yet – forever.</p>
@@ -646,16 +632,13 @@
             <h2 class="section-title">Gallery</h2>
             <p class="section-subtitle">Our favorite moments</p>
             <div class="gallery-grid">
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
+                <div class="gallery-item">Photo 1</div>
+                <div class="gallery-item">Photo 2</div>
+                <div class="gallery-item">Photo 3</div>
+                <div class="gallery-item">Photo 4</div>
+                <div class="gallery-item">Photo 5</div>
+                <div class="gallery-item">Photo 6</div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--text); opacity: 0.7;">
-                More photos coming soon!
-            </p>
         </div>
     </section>
 
@@ -778,17 +761,11 @@
         function handleRSVP(event) {
             event.preventDefault();
             
-            // Get form data
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
             
-            // Here you would typically send this data to a server
             console.log('RSVP Submitted:', data);
-            
-            // Show success message
             alert('Thank you for your RSVP! We look forward to celebrating with you.');
-            
-            // Reset form
             event.target.reset();
         }
     </script>
